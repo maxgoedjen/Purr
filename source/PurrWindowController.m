@@ -17,24 +17,35 @@
 
 #pragma mark -
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        lastHash = 0;
+    }
+    return self;
+}
+
 - (void) setNotification: (GrowlApplicationNotification *) theNotification {
-	[super setNotification:theNotification];
+
 	if (!theNotification)
 		return;
 
     NSString *name = [theNotification applicationName];
 	NSString *title = [theNotification title];
 	NSString *text  = [theNotification notificationDescription];
-    
+        
     NSUserNotificationCenter *nc = [NSUserNotificationCenter defaultUserNotificationCenter];
     
     NSUserNotification *xNotification = [[NSUserNotification alloc] init];
     xNotification.title = [NSString stringWithFormat:@"%@ - %@", name, title];
     xNotification.informativeText = [NSString stringWithFormat:@"%@", text];
     xNotification.deliveryDate = [NSDate date];
-    xNotification.soundName = NSUserNotificationDefaultSoundName;
-    [nc deliverNotification:xNotification];
-    nc.delegate = self;
+    
+    if ([theNotification hash] != lastHash) {
+        [nc deliverNotification:xNotification];
+    }
+    
+    lastHash = [theNotification hash];
     
 }
 

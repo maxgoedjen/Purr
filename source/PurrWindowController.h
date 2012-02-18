@@ -10,6 +10,7 @@
 @class PurrWindowController;
 
 @interface PurrWindowController : GrowlDisplayWindowController <NSUserNotificationCenterDelegate> {
+    NSInteger lastHash;
 }
 	
 @end

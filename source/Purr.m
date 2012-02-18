@@ -20,11 +20,6 @@
 	return self;
 }
 
-- (void) dealloc {
-	[preferencePane release];
-	[super dealloc];
-}
-
 #pragma mark -
 #pragma mark GrowlPositionController Methods
 #pragma mark -
