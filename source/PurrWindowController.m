@@ -37,8 +37,8 @@
     NSUserNotificationCenter *nc = [NSUserNotificationCenter defaultUserNotificationCenter];
     
     NSUserNotification *xNotification = [[NSUserNotification alloc] init];
-    xNotification.title = [NSString stringWithFormat:@"%@ - %@", name, title];
-    xNotification.informativeText = [NSString stringWithFormat:@"%@", text];
+    xNotification.title = [NSString stringWithFormat:@"%@", name];
+    xNotification.informativeText = [NSString stringWithFormat:@"%@\n%@", title, text];
     xNotification.deliveryDate = [NSDate date];
     
     if ([theNotification hash] != lastHash) {
